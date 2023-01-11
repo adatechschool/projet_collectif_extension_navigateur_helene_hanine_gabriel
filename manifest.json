@@ -4,7 +4,8 @@
     "version" : "1.0.1",
     "description" : "This extension will help you to personalize your new Google Chrome tabs",
     "permissions" : [
-        "tabs"
+        "tabs",
+        "geolocation"
     ],
     "action" : {
         "default_icon" : "img/season.png",

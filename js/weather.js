@@ -1,11 +1,20 @@
-// Fetch sur l'API Open-Meteo pour obtenir la météo au temps présent
 const urlWeather = "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true";
-document.getElementById("city").innerHTML = "Paris";
+const urlWeatherReplace = "https://api.open-meteo.com/v1/forecast?latitude=replace1&longitude=replace2&current_weather=true";
+let finalWeatherUrl;
+let cityUrl = 'https://nominatim.openstreetmap.org/reverse?format=json&lat=replace1&lon=replace2&zoom=18&addressdetails=1'
+let finalCityUrl;
 
+// La fonction createUrl changera la latitude et la longitude dans l'URL de l'api Open Meteo avec les valeurs obtenues grâce à la localisation de l'utilisateur. 
+function createUrl (url, a, b){
+    let firstStep = url.replace("replace1", a);
+    let resultUrl = firstStep.replace("replace2", b);
+    return resultUrl;
+}
 
-const fetchWeather = async () => {
+// La fonction fetchWeather permettra de réaliser la méthode fetch sur l'API Open-Meteo pour obtenir la météo au temps présent.
+const fetchWeather = async (url) => {
     try {
-        const response = await fetch(urlWeather);
+        const response = await fetch(url);
         let data = await response.json()
         return data;
     }
@@ -14,14 +23,16 @@ const fetchWeather = async () => {
     }
 }
 
-// getTemperature() cherche la temperature dans l'API et l'affiche dans l'index
-const getTemperature = () => {
-    fetchWeather()
+
+// getTemperature() cherche la température dans l'API et l'affiche dans l'index.
+const getTemperature = (url) => {
+    fetchWeather(url)
     .then((promise) => {
         let temperature = promise.current_weather.temperature;
         document.getElementById("temperature").innerHTML = temperature + " °C";
     })
 }
+
 
 //getWeatherCode() permet de récupérer le temps dans l'API et d'afficher l'icône correspondant dans l'index
 const weatherCodeObject = {
@@ -34,8 +45,9 @@ const weatherCodeObject = {
     error: 'img/weatherIcons/satellite.gif'
 }
 
-const getWeatherCode = () => {
-    fetchWeather()
+
+const getWeatherCode = (url) => {
+    fetchWeather(url)
     .then((promise) => {
         let weatherCode = promise.current_weather.weathercode;
         switch(weatherCode) {
@@ -63,5 +75,65 @@ const getWeatherCode = () => {
     })
 }
 
-getTemperature()
-getWeatherCode();
+
+// getTemperature()
+// getWeatherCode();
+
+
+let latitude;
+let longitude;
+let x;
+
+
+// La fonction getLocation() permettra de trouver la localisation de l'utilisateur en lattitude et longitude.
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x = "Geolocation is not supported by this browser.";
+  }
+}
+
+
+// La fonction showPosition permet de rendre la localisation de l'utilisateur dans deux variable latitude et longitude. 
+function showPosition(position) {
+  latitude = cutCoordinates(position.coords.latitude);
+  longitude = cutCoordinates(position.coords.longitude);
+  console.log(latitude);
+  console.log(longitude);
+  finalWeatherUrl = createUrl(urlWeatherReplace, latitude, longitude);
+  getTemperature(finalWeatherUrl);
+  getWeatherCode(finalWeatherUrl);
+  finalCityUrl = createUrl(cityUrl, latitude, longitude);
+  getCity(finalCityUrl);
+}
+
+
+// La fonction cutCoordinates permettra de formater la latitude et la longitude sous un format ne permettant que de garder deux chiffres après la virgule et l'arrondissant. 
+function cutCoordinates(number) {
+    return number.toFixed(2);
+}
+
+
+// La fonction fetchCity permet de trouver la ville dans laquelle se trouve l'utilisateur à partir de ses coordonnées de localisation. 
+const fetchCity = async (url) => {
+    try {
+        const response = await fetch(url);
+        let data = await response.json()
+        console.log(data);
+        return data;
+    }
+    catch (error) {
+        console.log(error.message);
+    }
+}
+
+function getCity (url){
+    fetchCity(url)
+    .then((promise) => {
+        let cityLocation = promise.address.city
+        document.getElementById("city").innerHTML = cityLocation;
+    })
+}
+
+getLocation();
