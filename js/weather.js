@@ -16,7 +16,6 @@ const fetchWeather = async (url) => {
     try {
         const response = await fetch(url);
         let data = await response.json()
-        console.log(data);
         return data;
     }
     catch (error) {
@@ -54,7 +53,6 @@ const getWeatherCode = (url) => {
     fetchWeather(url)
     .then((promise) => {
         let weatherCode = promise.current_weather.weathercode;
-        console.log(weatherCode);
         if (weatherCode == 0 && (currentHour > 6 && currentHour < 19)){
             document.getElementById("weatherCode").src = weatherCodeObject.clear;
         } else if (weatherCode == 0 && (currentHour <= 6 || currentHour >= 19)){
