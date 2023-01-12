@@ -16,7 +16,7 @@ const fetchWeather = async (url) => {
     try {
         const response = await fetch(url);
         let data = await response.json()
-        // console.log(data);
+        console.log(data);
         return data;
     }
     catch (error) {
