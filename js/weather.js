@@ -16,6 +16,7 @@ const fetchWeather = async (url) => {
     try {
         const response = await fetch(url);
         let data = await response.json()
+        // console.log(data);
         return data;
     }
     catch (error) {
@@ -37,7 +38,10 @@ const getTemperature = (url) => {
 //getWeatherCode() permet de récupérer le temps dans l'API et d'afficher l'icône correspondant dans l'index
 const weatherCodeObject = {
     clear : 'img/weatherIcons/sun.gif',
-    cloudy : 'img/weatherIcons/clouds.gif',
+    night : 'img/weatherIcons/night.gif',
+    cloudyNight : 'img/weatherIcons/cloudy_night.gif',
+    clouds : 'img/weatherIcons/clouds.gif',
+    cloudy : 'img/weatherIcons/cloudy.gif',
     rain :  'img/weatherIcons/rain.gif',
     snow : 'img/weatherIcons/snow.gif',
     fog : 'img/weatherIcons/foggy.gif',
@@ -50,34 +54,31 @@ const getWeatherCode = (url) => {
     fetchWeather(url)
     .then((promise) => {
         let weatherCode = promise.current_weather.weathercode;
-        switch(weatherCode) {
-            case  0 :
-                document.getElementById("weatherCode").src = weatherCodeObject.clear;
-            break;
-            case 1: case 2: case 3:
-                document.getElementById("weatherCode").src = weatherCodeObject.cloudy;
-            break;
-            case 45: case 48:
-                document.getElementById("weatherCode").src = weatherCodeObject.fog;
-            break;
-            case 51: case 53: case 55: case 56: case 57: case 61: case 63: case 65: case 66: case 67: case 80: case 81: case 82:
-                document.getElementById("weatherCode").src = weatherCodeObject.rain;
-            break;
-            case 71: case 73: case 75: case 77: case 85: case 86:
-                document.getElementById("weatherCode").src = weatherCodeObject.snow;
-            break;
-            case 95: case 96: case 99:
-                document.getElementById("weatherCode").src = weatherCodeObject.storm;
-            break;
-            default:
-                document.getElementById("weatherCode").src = weatherCodeObject.error;
+        console.log(weatherCode);
+        if (weatherCode == 0 && (currentHour > 6 && currentHour < 19)){
+            document.getElementById("weatherCode").src = weatherCodeObject.clear;
+        } else if (weatherCode == 0 && (currentHour <= 6 || currentHour >= 19)){
+            document.getElementById("weatherCode").src = weatherCodeObject.night;
+        } else if (weatherCode == 1 && (currentHour > 6 && currentHour < 19)){
+            document.getElementById("weatherCode").src = weatherCodeObject.cloudy;
+        } else if (weatherCode == 2 || weatherCode == 3 && (currentHour > 6 && currentHour < 19)){
+            document.getElementById("weatherCode").src = weatherCodeObject.clouds;
+        } else if ((weatherCode == 1 || weatherCode == 2 || weatherCode == 3) && (currentHour <= 6 || currentHour >= 19)){
+            document.getElementById("weatherCode").src = weatherCodeObject.cloudyNight;
+        } else if (weatherCode == 45 || weatherCode == 48){
+            document.getElementById("weatherCode").src = weatherCodeObject.fog;
+        } else if (weatherCode == 51 || weatherCode == 53 || weatherCode == 55 || weatherCode == 56 || weatherCode == 57 || weatherCode == 61 || weatherCode == 63 || weatherCode == 65 || weatherCode == 66 || weatherCode == 67 || weatherCode == 80 || weatherCode == 81 || weatherCode == 82){
+            document.getElementById("weatherCode").src = weatherCodeObject.rain;
+        } else if (weatherCode == 71 || weatherCode == 73 || weatherCode == 75 || weatherCode == 77 || weatherCode == 85 || weatherCode == 86){
+            document.getElementById("weatherCode").src = weatherCodeObject.snow;
+        } else if (weatherCode == 95 || weatherCode == 96 || weatherCode == 99){
+            document.getElementById("weatherCode").src = weatherCodeObject.storm;
+        } else {
+            document.getElementById("weatherCode").src = weatherCodeObject.error;
         }
     })
 }
 
-
-// getTemperature()
-// getWeatherCode();
 
 
 let latitude;
@@ -99,8 +100,8 @@ function getLocation() {
 function showPosition(position) {
   latitude = cutCoordinates(position.coords.latitude);
   longitude = cutCoordinates(position.coords.longitude);
-  console.log(latitude);
-  console.log(longitude);
+//   console.log(latitude);
+//   console.log(longitude);
   finalWeatherUrl = createUrl(urlWeatherReplace, latitude, longitude);
   getTemperature(finalWeatherUrl);
   getWeatherCode(finalWeatherUrl);
@@ -120,7 +121,7 @@ const fetchCity = async (url) => {
     try {
         const response = await fetch(url);
         let data = await response.json()
-        console.log(data);
+        // console.log(data);
         return data;
     }
     catch (error) {
@@ -136,4 +137,19 @@ function getCity (url){
     })
 }
 
+
+// La fonction getUserTime() prendra la date de l'utilisateur afin de déterminer si nous sommes la nuit ou le jour. 
+getUserTime();
+
+function getUserTime(){
+    newDate = new Date()
+    newDate.getHours();
+    currentDate = newDate.toString();
+    currentHour = currentDate[16] + currentDate[17];
+    return parseInt(currentHour);  
+}
+
 getLocation();
+
+
+
