@@ -6,11 +6,18 @@ const fetchNews = async (url) => {
         const response = await fetch(url, {mode: 'cors'}
         );
         let data = await response.json()
+        document.getElementById("news1").setAttribute("href", data.articles[0].url)
         document.getElementById("news1").innerHTML = data.articles[0].title;
+        document.getElementById("news2").setAttribute("href", data.articles[1].url)
         document.getElementById("news2").innerHTML = data.articles[1].title;
+        document.getElementById("news3").setAttribute("href", data.articles[2].url)
         document.getElementById("news3").innerHTML = data.articles[2].title;
+        document.getElementById("news4").setAttribute("href", data.articles[3].url)
         document.getElementById("news4").innerHTML = data.articles[3].title;
+        document.getElementById("news5").setAttribute("href", data.articles[4].url)
         document.getElementById("news5").innerHTML = data.articles[4].title;
+
+        console.log(data);
         return data;
     }
     catch (error) {
