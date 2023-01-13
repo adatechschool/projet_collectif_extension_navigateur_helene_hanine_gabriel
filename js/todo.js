@@ -1,54 +1,75 @@
 const boutton = document.getElementById("button")
 boutton.addEventListener("click", addTask);
 let userInp = document.getElementById("addTask")
+const list = document.getElementById('myList');
 
-let listItems = []
+// recuperate the todos from the local storage
+let todos = JSON.parse(localStorage.getItem('todos')) || []
 
-function addTask(){
-    // recuperate the value of the user input
-    let task = userInp.value
 
-    listItems.push(task)
-    // create the "li" element
-    let nodeLi = document.createElement("li")
+function loadTasks(){
+
+    list.innerHTML= " "
+
+    // loop through the todos
+    for (let i = 0; i < todos.length; i++) {
+    // create element li
+    const nodeLi = document.createElement('li');
+    // insert every todo item in the li
+    nodeLi.textContent = todos[i].mytask;
+    nodeLi.id = i; // add an id for every element to be able to refer to it
+
+
     // create the input element
     let check = document.createElement("INPUT")
     Object.assign(check, {
       type : "checkbox"
     })
 
-    // create button element
-    let btn = document.createElement("button");
-    btn.innerHTML= "X"
-    Object.assign(btn, {
+    // create delete button element
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent= "X"
+    Object.assign(deleteBtn, {
       type : "button"
     })
-    //add the event listener to the button
-    btn.addEventListener("click", deleteItem)
-    // append input, btn to nodeLI (li element)
-    nodeLi.appendChild(check)
-    const textnode = document.createTextNode(task)
-    nodeLi.appendChild(textnode)
-    nodeLi.appendChild(btn)
-   
-    // store an item in the local storage
     
-    //Append nodeLi to <ul>
-    document.getElementById("myList").appendChild(nodeLi);
-
-   console.log(task)
+    //add the event listener to the button
+    deleteBtn.addEventListener("click", deleteItem)
 
     // create the delete function that removes the nodeLI when the button in the node is clicked
-  function deleteItem(){
+      function deleteItem(){
         const list = document.getElementById("myList");
+        todos.splice(nodeLi.id,1)
         list.removeChild(nodeLi);
-    }  
-    
-    localStorage.setItem('todoItems', JSON.stringify(listItems))
+        localStorage.setItem('todos', JSON.stringify(todos))
+    } 
 
+    // append input, deletebtn to nodeLI (li element)
+    nodeLi.appendChild(check);
+    nodeLi.appendChild(deleteBtn);
+    
+    //Append nodeLi to <ul>
+    document.getElementById("myList").appendChild(nodeLi); 
+    
+        // Save the to-dos to local storage
+    localStorage.setItem('todos', JSON.stringify(todos));
+
+
+    }
 }
 
 
+function addTask(){
+    let task = userInp.value.trim()
+    // Add the new to-do to the list
+    todos.push({ mytask: task});
+
+    // Clear the input
+    userInp.value = '';
+
+    loadTasks();
+}
 
 
- 
+loadTasks()
+
