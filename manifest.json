@@ -5,7 +5,8 @@
     "description" : "This extension will help you to personalize your new Google Chrome tabs",
     "permissions" : [
         "tabs",
-        "geolocation"
+        "geolocation",
+        "storage"
     ],
     "host_permissions": [
         "http://*/*",
