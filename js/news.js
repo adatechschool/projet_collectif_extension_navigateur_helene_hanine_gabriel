@@ -5,19 +5,14 @@ const fetchNews = async (url) => {
     try {
         const response = await fetch(url, {mode: 'cors'}
         );
-        let data = await response.json()
-        document.getElementById("news1").setAttribute("href", data.articles[0].url)
-        document.getElementById("news1").innerHTML = data.articles[0].title;
-        document.getElementById("news2").setAttribute("href", data.articles[1].url)
-        document.getElementById("news2").innerHTML = data.articles[1].title;
-        document.getElementById("news3").setAttribute("href", data.articles[2].url)
-        document.getElementById("news3").innerHTML = data.articles[2].title;
-        document.getElementById("news4").setAttribute("href", data.articles[3].url)
-        document.getElementById("news4").innerHTML = data.articles[3].title;
-        document.getElementById("news5").setAttribute("href", data.articles[4].url)
-        document.getElementById("news5").innerHTML = data.articles[4].title;
-
-        console.log(data);
+        let data = await response.json();
+        for (let i = 0; i <= 19; i++){
+            if (data.articles[i].urlToImage !== null){
+                const li = document.createElement("li");
+                li.innerHTML = `<img src = ${data.articles[i].urlToImage} width="200px"> <a href = ${data.articles[i].url} > ${data.articles[i].title} </a>` 
+                document.getElementById("newsTitles").appendChild(li);
+            }
+        }
         return data;
     }
     catch (error) {
