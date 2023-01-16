@@ -8,6 +8,11 @@
         "geolocation",
         "storage"
     ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*", 
+        "*://*/*"
+    ],
     "action" : {
         "default_icon" : "img/season.png",
         "default_title" : "Diario"
