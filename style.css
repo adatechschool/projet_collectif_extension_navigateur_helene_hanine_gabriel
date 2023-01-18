@@ -1,36 +1,61 @@
+/* BODY -- Background */
+
+body {
+  background-image: url("img/oiseau.jpg");
+  background-size: cover;
+}
+
+
+
+/* GRID LAYOUT */
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 10px;
-  background-color: #2196F3;
   padding: 10px;
+  border: 3px solid green;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+  background-color: rgba(66, 65, 62, 0.5);
+  /* padding: 20px 0; */
 }
 
+
+
+/* TITLE */
 .title {
   grid-column-start: 1;
   grid-column-end: 3;
+  opacity: 1;
 }
 
-.news {
-  grid-column-start: 1;
-  grid-column-end: 3;
+.test1, .test2 {
+  width: 30%;
+  border: 3px solid orange;
 }
 
-.todo {
+/* WEATHER */
+.weather {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  border: 3px solid blue;
+}
+
+.weatherItem {
+  width: 30%;
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start : 2;
-  grid-row-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 1vw;
+  border: 3px solid red;
+  align-items: right;
 }
 
-.bookmarks {
+
+/* NEWS */
+.news {
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -93,4 +118,22 @@ p {
       transform: translateX(0px)
   } 
 
+}
+
+
+
+/* TODOLIST */
+.todo {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start : 2;
+  grid-row-end: 4;
+}
+
+
+
+/* BOOKMARKS */
+.bookmarks {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
