@@ -19,6 +19,7 @@ function loadTasks(){
     userVal.value = todos[i].mytask;
     userVal.type="text"
     userVal.id = i;
+    userVal.classList.add('taskfield')
      // add an id for every element to be able to refer to it
     nodeDiv.id = i;
 
@@ -35,14 +36,14 @@ function loadTasks(){
     Object.assign(deleteBtn, {
       type : "button",
     })
-
+    deleteBtn.classList.add('delBtn')
      // create edit button element
     let editBtn = document.createElement("button");
     editBtn.textContent= "E";
     Object.assign(editBtn, {
       type : "button",
     })
-    
+    editBtn.classList.add('edBtn')
     //add the event listener to the button
     deleteBtn.addEventListener("click",() => deleteItem(nodeDiv));
 
