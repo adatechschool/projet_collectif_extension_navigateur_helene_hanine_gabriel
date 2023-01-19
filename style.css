@@ -8,7 +8,7 @@ body {
 /* GRID LAYOUT */
 [class*="col"] {
   padding: 1rem;
-  /* background-color: blue;
+  /*background-color: blue;
   border: 2px solid #fff; */
   color: #fff;
   align-content: center;
@@ -190,9 +190,16 @@ body {
   background-color: rgb(251, 3, 28);
   cursor: pointer;
 }
-
 .edBtn:hover {
   background-color: rgb(58, 226, 245);
   cursor: pointer;
 }
-/* BOOKMARKS */
+
+
+/* BOOKMARKS  */
+#bookmarks {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+}
+
+
