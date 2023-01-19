@@ -31,4 +31,5 @@ function getUserTime(){
 
 // Appel de Fonctions
 displayBackground(getUserTime());
-// displayBackground(20);
+// displayBackground(12);
+

@@ -26,7 +26,12 @@ function showNews (data){
     const divCaptionActive = document.createElement("div");
     divCaptionActive.className = "carousel-caption d-none d-md-block";
     const pTitleActive = document.createElement("p");
-    pTitleActive.innerHTML = `<a href="${data.articles[0].url}" class="styleTitle" target="_blank">${data.articles[0].title}</a>`
+    // pTitleActive.innerHTML = `<a href="${data.articles[0].url}" class="styleTitle" target="_blank">${data.articles[0].title}</a>`
+    if (currentHour >= 6 && currentHour < 19){
+        pTitleActive.innerHTML = `<a href="${data.articles[0].url}" class="styleTitle" style="color:#0d0d0c;text-decoration: none;" target="_blank" >${data.articles[0].title}</a>`;
+    } else {
+        pTitleActive.innerHTML = `<a href="${data.articles[0].url}" class="styleTitle" style="color:#ffffff;text-decoration: none;" target="_blank" >${data.articles[0].title}</a>`;
+    }
     divCaptionActive.appendChild(pTitleActive);
     divActive.appendChild(imgActive);
     divActive.appendChild(divCaptionActive);
@@ -42,7 +47,11 @@ function showNews (data){
             const divCaption = document.createElement("div");
             divCaption.className = "carousel-caption d-none d-md-block";
             const pTitle = document.createElement("p");
-            pTitle.innerHTML = `<a href="${data.articles[i].url}" class="styleTitle" target="_blank">${data.articles[i].title}</a>`
+            if (currentHour >= 6 && currentHour < 19){
+                pTitle.innerHTML = `<a href="${data.articles[i].url}" class="styleTitle" style="color:#0d0d0c;text-decoration: none;" target="_blank" >${data.articles[i].title}</a>`;
+            } else {
+                pTitle.innerHTML = `<a href="${data.articles[i].url}" class="styleTitle" style="color:#ffffff;text-decoration: none;" target="_blank" >${data.articles[i].title}</a>`;
+            }
             divCaption.appendChild(pTitle);
             div.appendChild(img);
             div.appendChild(divCaption);
@@ -51,4 +60,12 @@ function showNews (data){
     }
 }
 
-// fetchNews(newsUrl);
+function getUserTime(){
+    newDate = new Date();
+    newDate.getHours();
+    currentDate = newDate.toString();
+    currentHour = currentDate[16] + currentDate[17];
+    return parseInt(currentHour);  
+}
+
+fetchNews(newsUrl);
