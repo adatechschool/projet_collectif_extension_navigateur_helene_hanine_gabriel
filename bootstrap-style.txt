@@ -1,6 +1,0 @@
-[class*="col"]{
-  padding: 1rem;
-  background-color: blue;
-  border: 2px solid #fff;
-  color:#fff;
-}

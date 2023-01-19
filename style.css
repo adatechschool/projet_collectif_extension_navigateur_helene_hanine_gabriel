@@ -1,24 +1,19 @@
-/* BODY -- Background */
-
-body {
-  background-image: url("img/oiseau.jpg");
-  background-size: cover;
-}
-
 /* GRID LAYOUT */
 [class*="col"] {
   padding: 1rem;
   align-content: center;
 }
 
+/* HEADER */
+header {
+  text-align: center;
+}
+
 /* TITLE */
 #title {
-  padding: 4rem
+  padding: 3rem
 }
-.diarioLogo {
-  margin: auto;
-  margin-left: 35%;
-}
+
 
 /* WEATHER */
 
