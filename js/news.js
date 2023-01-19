@@ -6,11 +6,12 @@ const fetchNews = async (url) => {
         const response = await fetch(url, {mode: 'cors'}
         );
         let data = await response.json();
-        for (let i = 0; i <= 19; i++){
+        for (let i = 0; i <= 10; i++){
             if (data.articles[i].urlToImage !== null){
-                const li = document.createElement("li");
-                li.innerHTML = `<img src = ${data.articles[i].urlToImage} width="200px"> <a href = ${data.articles[i].url} > ${data.articles[i].title} </a>` 
-                document.getElementById("newsTitles").appendChild(li);
+                const div = document.createElement("div");
+                div.className = "slide";
+                div.innerHTML = `<a href="${data.articles[i].url}"><img class="imgnews" src = ${data.articles[i].urlToImage}></a><p><a href="${data.articles[i].url}">${data.articles[i].title}</a></p>`
+                document.getElementById("newsTitles").appendChild(div);
             }
         }
         return data;
