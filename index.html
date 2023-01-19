@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Diario</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
 <body>
-
-
     <div class="container-fluid border">
         <div class="row">
             <div class="col-sm-10" id="title">
                 DIARIO
             </div>
+
             <div class="col-sm-2" id="weather">
                 <p id="city"></p>
                 <p id="temperature"></p>
-                <img id="weatherCode">
+                <img id="weatherCode" />
             </div>
         </div>
+
         <div class="row">
             <div class="col-sm-6" id="news">
                 <div class="slider">
                     <div class="slides" id="newsTitles"></div>
-                </div> 
+                </div>
             </div>
+
             <div class="col-sm-6" id="todo">
-                  <div class="parentTodo">
-        <div class="myTodo">
-            <div class="inputvalue">
-                <input type="text" class="userInput" id="addTask" placeholder="Enter Your Task">
-                <button type="button" id="addButton"> + </button>
+                <div class="parentTodo">
+                    <div class="myTodo">
+                        <div class="inputvalue">
+                            <input
+                                type="text"
+                                class="userInput"
+                                id="addTask"
+                                placeholder="Enter Your Task"
+                            />
+                            <button type="button" id="addButton">+</button>
+                        </div>
+                    </div>
+                    <div>
+                        <ul id="myList"></ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div>
-            <ul id="myList">
-            </ul>
-        </div>
-    </div>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-sm-12" id="favorites">
                 <button id="bookmarks">Bookmarks</button>
@@ -58,8 +63,6 @@
     <script src="js/bookmarks.js"></script>
     <script src="js/news.js"></script>
     <script src="js/todo.js"></script>
-    <script src="js/weather.js"></script> 
-
+    <script src="js/weather.js"></script>
 </body>
-
 </html>
