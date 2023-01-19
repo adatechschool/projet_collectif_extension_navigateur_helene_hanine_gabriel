@@ -1,6 +1,6 @@
-document.getElementById("bookmarks").addEventListener("click", getBookmarks);
-document.getElementById("bookmarks").addEventListener("mouseover", () => showBookmarks("level0"));
+document.getElementById("bookmarks").addEventListener("click", ()=>showBookmarks("level0"));
 
+getBookmarks()
 function showBookmarks (divId) {
     const myDiv = document.getElementById(divId)
     if (myDiv.style.display==="none") {
@@ -12,20 +12,18 @@ function showBookmarks (divId) {
 }
 
 // getBookmarks() récupère l'intégralite l'arborescence des marques pages de chrome et à partir du noeud principal rècupère les descendants
-console.log(chrome.bookmarks.getTree());
-
 function getBookmarks() {
     // arborescence principale
     chrome.bookmarks.getTree((bookmarksTree)=>{
         //descendants
         chrome.bookmarks.getChildren(bookmarksTree[0].id, createBookmarks);
     });
+    document.getElementById("level0").style.display = "none"
+    
 };
 
 // createBookmarks() est une fonction recursive qui affiche les favoris sur la page HTML et parcours l'arborescence des favoris
-
 function createBookmarks(bookmarksTree) {
-    document.getElementById("bookmarks").removeEventListener("click", getBookmarks);
     //Parcours l'arborescence
     for(let i=0; i<bookmarksTree.length; i++) {
         const mainFolder = document.createElement("ul");
@@ -49,6 +47,7 @@ function createBookmarks(bookmarksTree) {
             const fileLiText = document.createTextNode(bookmarksTree[i].title);
             const myDiv = document.createElement("div")
             myDiv.id = "level"+bookmarksTree[i].id;
+            myDiv.style.display = "none";  
             folderImg.src = "img/folderIcon/folder.png";
             openButton.id = "button"+bookmarksTree[i].id;
             openButton.appendChild(folderImg);
@@ -56,18 +55,11 @@ function createBookmarks(bookmarksTree) {
             subFolder.appendChild(openButton);
             subFolder.appendChild(myDiv);
             mainFolder.appendChild(subFolder);
-            
-            //console.log(myDiv.id)
             const parent = document.getElementById("level"+bookmarksTree[i].parentId);
-            parent.appendChild(mainFolder);
-            
-            
-            
+            parent.appendChild(mainFolder);    
             // Recursivité pour parcourrir le folder en question
-            document.getElementById(`button${bookmarksTree[i].id}`).addEventListener("click", () => {
-                chrome.bookmarks.getChildren(bookmarksTree[i].id, createBookmarks);
-            });
-            document.getElementById(`button${bookmarksTree[i].id}`).addEventListener("mouseover", () => showBookmarks(myDiv.id))
+            document.getElementById(`button${bookmarksTree[i].id}`).addEventListener("click", () => showBookmarks(myDiv.id));
+            chrome.bookmarks.getChildren(bookmarksTree[i].id, createBookmarks);
         }; 
         
     };
