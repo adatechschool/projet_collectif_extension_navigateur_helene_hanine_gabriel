@@ -4,12 +4,13 @@ document.body.style.backgroundImage = "url('img/background/night.jpg')";
 function displayBackground (int){
     let userHour = int;
     if (userHour >= 6 && userHour < 19){
-        document.body.style.backgroundImage = "url('img/background/day.jpg')"
+        document.body.style.backgroundImage = "url('img/background/day.jpg')";
         backgroundStyle();
-        
+        document.body.style.color = "#0d0d0c";
     } else {
-        document.body.style.backgroundImage = "url('img/background/night.jpg')"
+        document.body.style.backgroundImage = "url('img/background/night.jpg')";
         backgroundStyle();
+        document.body.style.color = "#ffffff";
     }
 }
 
