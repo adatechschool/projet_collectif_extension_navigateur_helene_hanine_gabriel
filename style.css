@@ -11,71 +11,52 @@ body {
   background-color: blue;
   border: 2px solid #fff;
   color: #fff;
+  align-content: center;
 }
 
 /* TITLE */
+#title {
+  padding: 4rem
+}
+.diarioLogo {
+  margin: auto;
+  margin-left: 35%;
+}
 
 /* WEATHER */
 
 /* NEWS */
-.slider {
-  width: 300px;
-  overflow: hidden;
-  margin: 10px auto;
+
+#news {
+  text-align: center;
+  background-color: rgba(63, 69, 69, 0.8);
+  border-radius: 20px 20px 20px 20px;
+}
+.carousel-inner {
+  text-align: center;
 }
 
-.slides {
-  width: calc(300px * 10);
-  animation: glisse 30s infinite;
+
+[class*="carousel-item"]{
+  height: 400px;
+  align-content: center;
 }
 
-.slide {
-  float: left;
+.styleImage {
+  max-width: 100%;
+  max-height: 70%;
 }
 
-p {
-  width: 300px;
-}
-.imgnews {
-  height: 150px;
-  width: 300px;
+.styleTitle {
+  color:#fff;
+  text-decoration: none;
+  background-color: rgba(63, 69, 69, 0.95);
 }
 
-@keyframes glisse {
-  0% {
-    transform: translateX(0);
-  }
-  10% {
-    transform: translateX(-300px);
-  }
-  20% {
-    transform: translateX(-600px);
-  }
-  30% {
-    transform: translateX(-900px);
-  }
-  40% {
-    transform: translateX(-1200px);
-  }
-  50% {
-    transform: translateX(-1500px);
-  }
-  60% {
-    transform: translateX(-1800px);
-  }
-  70% {
-    transform: translateX(-2100px);
-  }
-  80% {
-    transform: translateX(-2400px);
-  }
-  90% {
-    transform: translateX(-2700px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
+.styleTitle:hover{
+  text-decoration: underline;
+  color: red;
+
 
 /* TODOLIST */
 .parentTodo {
@@ -163,6 +144,7 @@ p {
   user-select: none;
   transition: 0.2s;
 }
+
 
 .taskfield {
   width: 275px;
