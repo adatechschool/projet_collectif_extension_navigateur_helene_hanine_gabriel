@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diario</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -15,20 +16,25 @@
         <p id="temperature"></p>
         <img id="weatherCode">
     </div>
-    
+
     <div class="news">
         <h1>News</h1>
         <ul id="newsTitles">
         </ul>
     </div>
 
-    <form class="toDo">
-        <input type="text" id="addTask" placeholder="Enter Your Task">
-        <button type="button" id="addButton">Add</button>
-        <ul id="myList">
-        </ul>
-    </form>
-    
+    <div class="container">
+        <div class="myTodo">
+            <div class="inputvalue">
+                <input type="text" class="userInput" id="addTask" placeholder="Enter Your Task">
+                <button type="button" id="addButton"> + </button>
+            </div>
+        </div>
+        <div>
+            <ul id="myList">
+            </ul>
+        </div>
+    </div>
     <div class="bookmarks">
         <h1>Vos favoris</h1>
         <div id="title"></div>
