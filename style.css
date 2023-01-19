@@ -8,8 +8,8 @@ body {
 /* GRID LAYOUT */
 [class*="col"] {
   padding: 1rem;
-  background-color: blue;
-  border: 2px solid #fff;
+  /* background-color: blue;
+  border: 2px solid #fff; */
   color: #fff;
   align-content: center;
 }
@@ -29,7 +29,6 @@ body {
 
 #news {
   text-align: center;
-  background-color: rgba(63, 69, 69, 0.8);
   border-radius: 20px 20px 20px 20px;
 }
 .carousel-inner {
@@ -45,18 +44,18 @@ body {
 .styleImage {
   max-width: 100%;
   max-height: 70%;
+  border-radius: 10px;
 }
 
 .styleTitle {
   color:#fff;
   text-decoration: none;
-  background-color: rgba(63, 69, 69, 0.95);
 }
 
 .styleTitle:hover{
   text-decoration: underline;
   color: red;
-
+}
 
 /* TODOLIST */
 .parentTodo {
