@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Diario</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
 
     <div class="container-fluid border">
         <div class="row">
@@ -30,11 +32,18 @@
                 </div> 
             </div>
             <div class="col-sm-6" id="todo">
-                <form class="toDo">
-                    <input type="text" id="addTask" placeholder="Enter Your Task">
-                    <button type="button" id="addButton">Add</button>
-                    <div id="myList"></div>
-                </form>
+                  <div class="parentTodo">
+        <div class="myTodo">
+            <div class="inputvalue">
+                <input type="text" class="userInput" id="addTask" placeholder="Enter Your Task">
+                <button type="button" id="addButton"> + </button>
+            </div>
+        </div>
+        <div>
+            <ul id="myList">
+            </ul>
+        </div>
+    </div>
             </div>
         </div>
         <div class="row">

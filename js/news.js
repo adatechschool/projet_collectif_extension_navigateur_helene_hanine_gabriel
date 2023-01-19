@@ -22,4 +22,4 @@ const fetchNews = async (url) => {
 }
 
 
-fetchNews(newsUrl);
+//fetchNews(newsUrl);

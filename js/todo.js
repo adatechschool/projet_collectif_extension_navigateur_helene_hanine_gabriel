@@ -17,15 +17,16 @@ function loadTasks(){
     // insert every todo item in the li
     let userVal = document.createElement('input');
     userVal.value = todos[i].mytask;
+    userVal.type="text"
     userVal.id = i;
-
      // add an id for every element to be able to refer to it
     nodeDiv.id = i;
 
     // create the input element
     let check = document.createElement("INPUT");
     Object.assign(check, {
-      type : "checkbox"
+      type : "checkbox",
+      id:"checkbox"
     })
 
     // create delete button element
@@ -37,7 +38,7 @@ function loadTasks(){
 
      // create edit button element
     let editBtn = document.createElement("button");
-    editBtn.textContent= "Edit";
+    editBtn.textContent= "E";
     Object.assign(editBtn, {
       type : "button",
     })
@@ -45,7 +46,9 @@ function loadTasks(){
     //add the event listener to the button
     deleteBtn.addEventListener("click",() => deleteItem(nodeDiv));
 
-    //editBtn.addEventListener('click', () => editTask(nodeDiv, userVal));
+
+    editBtn.addEventListener('click', () => editTask(userVal));
+
 
     // append input, deletebtn to nodeDiv (div element)
     nodeDiv.appendChild(check);
@@ -75,16 +78,14 @@ function addTask(){
     
   }
 
-/* function editTask(elem, elem2){
+  function editTask(elem){
 
-    let newTask = document.getElementById(elem2.id).value;
-    console.log(newTask)
-
-    todos.splice(elem.id,1, newTask);
-    todos.push({ mytask: newTask});
+    let newTask = elem.value
+    //console.log(newTask)
+   
+    todos.splice(elem.id, 1 , {mytask: newTask});
     localStorage.setItem('todos', JSON.stringify(todos));
-
-}  */
+}  
 
 // create the delete function that removes the nodeDiv when the button in the node is clicked
 function deleteItem(elem){
