@@ -225,4 +225,24 @@ header {
 #bookmarks {
   background: rgba(0, 0, 0, 0);
   border: 0;
+  float: left;
+}
+#button1, #button2{
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  margin-left: 0;
+  align-items:flex-end;
+}
+
+.child-bookmarks{
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  margin-left: 72px;
+}
+
+
+.no-bullets {
+  margin-left: 64px;
+  list-style-type: none;
+  clear: left;
 }

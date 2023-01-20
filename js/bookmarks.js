@@ -26,30 +26,36 @@ function getBookmarks() {
 function createBookmarks(bookmarksTree) {
     //Parcours l'arborescence
     for(let i=0; i<bookmarksTree.length; i++) {
-        const mainFolder = document.createElement("ul");
+        const mainFolder = document.createElement("div");
         // Si Url existante = affichage
         if (bookmarksTree[i].url != null) {
+            const ul = document.createElement("ul");
             const fileLi = document.createElement("li");
             const aLink = document.createElement("a");
+            fileLi.className = "no-bullets";
             const aLinkText = document.createTextNode(bookmarksTree[i].title);
             aLink.href = bookmarksTree[i].url;
             aLink.appendChild(aLinkText);
             fileLi.appendChild(aLink);
-            mainFolder.appendChild(fileLi);
+            ul.appendChild(fileLi);
             const parent = document.getElementById("level"+bookmarksTree[i].parentId);
-            parent.appendChild(mainFolder);
+            parent.appendChild(ul);
         }
         // Sinon c'est un folder = affichage du folder + recursivité pour trouver l'Url
         else {
-            const subFolder = document.createElement("li");
+            const subFolder = document.createElement("div");
             const openButton = document.createElement("button");
             const folderImg = document.createElement("img");
             const fileLiText = document.createTextNode(bookmarksTree[i].title);
             const myDiv = document.createElement("div")
             myDiv.id = "level"+bookmarksTree[i].id;
             myDiv.style.display = "none";  
-            folderImg.src = "img/folderIcon/folder.png";
+            folderImg.src = "img/folderIcon/bookmark (1).png";
+            folderImg.style.width = "48px"
+            openButton.className = "child-bookmarks";
             openButton.id = "button"+bookmarksTree[i].id;
+            console.log(openButton.id);
+            //openButton.style.float = "left";
             openButton.appendChild(folderImg);
             openButton.appendChild(fileLiText);
             subFolder.appendChild(openButton);
