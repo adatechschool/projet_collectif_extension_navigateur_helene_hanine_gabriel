@@ -7,10 +7,14 @@ function displayBackground (int){
         document.body.style.backgroundImage = "url('img/background/day.jpg')";
         backgroundStyle();
         document.body.style.color = "#0d0d0c";
+        document.getElementById("city").style.color = "#0d0d0c";
+        document.getElementById("temperature").style.color = "#0d0d0c";
     } else {
         document.body.style.backgroundImage = "url('img/background/night.jpg')";
         backgroundStyle();
         document.body.style.color = "#ffffff";
+        document.getElementById("city").style.color = "#ffffff";
+        document.getElementById("temperature").style.color = "#ffffff";
     }
 }
 
