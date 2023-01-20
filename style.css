@@ -1,24 +1,19 @@
-/* BODY -- Background */
-
-body {
-  background-image: url("img/oiseau.jpg");
-  background-size: cover;
-}
-
 /* GRID LAYOUT */
 [class*="col"] {
   padding: 1rem;
   align-content: center;
 }
 
+/* HEADER */
+header {
+  text-align: center;
+}
+
 /* TITLE */
 #title {
-  padding: 4rem;
+  padding: 3rem
 }
-.diarioLogo {
-  margin: auto;
-  margin-left: 35%;
-}
+
 
 /* WEATHER */
 
@@ -64,7 +59,6 @@ body {
 }
 
 /* NEWS */
-
 #news {
   text-align: center;
   border-radius: 20px 20px 20px 20px;
@@ -82,11 +76,7 @@ body {
   max-width: 100%;
   max-height: 70%;
   border-radius: 10px;
-}
-
-.styleTitle {
-  color: #fff;
-  text-decoration: none;
+  border: 1px solid rgb(87, 87, 87);
 }
 
 .styleTitle:hover {
