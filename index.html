@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Diario</title>
+  </head>
+
+  <body>
+    <header>
+        <img src="img/diario_logo.png" class="diarioLogo">
+    </header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-10" id="title">
+            </div>
+            <div class="col-sm-2" id="weather">
+              <div class="img_temp">
+                <img id="weatherCode">
+                <p id="temperature"></p>
+              </div>
+                <p id="city"></p>
+      
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6" id="news">
+                News Headlines
+              <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                </div>
+                <div class="carousel-inner" id="carousel-inner">
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+             </div>
+          </div>
+          <div class="col-sm-2"></div>
+          <div class="col-sm-4" id="todo">
+          <div class="parentTodo">
+            My Todo List
+            <div class="myTodo">
+              <div class="inputvalue">
+                <input
+                  type="text"
+                  class="userInput"
+                  id="addTask"
+                  placeholder="Enter Your Task"
+                />
+                <button type="button" id="addButton">+</button>
+
+              </div>
+            </div>
+            <div>
+              <ul id="myList"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-sm-12" id="favorites">
+                <button id="bookmarks"><img src="/img/folderIcon/bookmark (1).png"></button>
+                <div id="level0"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="js/bookmarks.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>
