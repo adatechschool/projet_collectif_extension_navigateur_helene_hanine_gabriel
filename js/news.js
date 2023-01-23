@@ -16,6 +16,7 @@ const fetchNews = async (url) => {
     }
 }
 
+let currentHour = 21;
 function showNews (data){
     const divActive = document.createElement("div");
     divActive.className = "carousel-item active";
@@ -65,7 +66,7 @@ function getUserTime(){
     newDate.getHours();
     currentDate = newDate.toString();
     currentHour = currentDate[16] + currentDate[17];
-    return parseInt(currentHour);  
+    return parseInt(currentHour);
 }
 
 fetchNews(newsUrl);
